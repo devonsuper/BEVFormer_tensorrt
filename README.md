@@ -1,24 +1,28 @@
-sorry need to edit but you need to do this
-
+Currently, the best way to use this is to build the docker on a linux machine that supports cuda. There is one extra step after building the docker, which is to build pytorch quantization from source.
+```
 pip uninstall pytorch-quantization
 git clone https://github.com/NVIDIA/TensorRT.git
 cd TensorRT
 git checkout release/8.4
 cd tools/pytorch-quantization
 python setup.py install
+```
 
 
-build custom plugins:
 
-install a higher version of cmake
+build tensorrt custom plugins:
+
+1) install a higher version of cmake, if you're on the jetson
+```
 sudo apt remove --purge cmake
 wget https://github.com/Kitware/CMake/releases/download/v3.25.2/cmake-3.25.2-Linux-aarch64.sh
 chmod +x cmake-3.25.2-Linux-aarch64.sh
 sudo ./cmake-3.25.2-Linux-aarch64.sh --skip-license --prefix=/usr/local
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc
+```
+2) Follow the mmdeploy custom plugins steps
 
-follow mmdeploy steps to get custom plugins
 
 # Deployment of BEV 3D Detection on TensorRT
 
