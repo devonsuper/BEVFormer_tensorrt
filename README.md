@@ -8,15 +8,13 @@ cd tools/pytorch-quantization
 python setup.py install
 
 
-build custom plugins 
-make sure cmake is >= 3.18
-clone onto jetson or deployment board
+build custom plugins:
 mkdir -p build && cd build
 cmake .. \
   -DCMAKE_CUDA_COMPILER=/usr/local/cuda/bin/nvcc \
   -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11.4 \
   -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_CUDA_ARCHITECTURES="72;87"        
+  -DCMAKE_CUDA_ARCHITECTURES="72;87"   #xavier nx and orin nano compute architectures. adjust accordingly    
 make -j$(nproc)
 
 # Deployment of BEV 3D Detection on TensorRT
