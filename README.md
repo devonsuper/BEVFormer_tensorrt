@@ -9,13 +9,16 @@ python setup.py install
 
 
 build custom plugins:
-mkdir -p build && cd build
-cmake .. \
-  -DCMAKE_CUDA_COMPILER=/usr/local/cuda/bin/nvcc \
-  -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11.4 \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_CUDA_ARCHITECTURES="72;87"   #xavier nx and orin nano compute architectures. adjust accordingly    
-make -j$(nproc)
+
+install a higher version of cmake
+sudo apt remove --purge cmake
+wget https://github.com/Kitware/CMake/releases/download/v3.25.2/cmake-3.25.2-Linux-aarch64.sh
+chmod +x cmake-3.25.2-Linux-aarch64.sh
+sudo ./cmake-3.25.2-Linux-aarch64.sh --skip-license --prefix=/usr/local
+echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+
+follow mmdeploy steps to get custom plugins
 
 # Deployment of BEV 3D Detection on TensorRT
 
