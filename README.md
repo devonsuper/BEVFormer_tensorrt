@@ -1,3 +1,12 @@
+sorry need to edit but you need to do this
+
+pip uninstall pytorch-quantization
+git clone https://github.com/NVIDIA/TensorRT.git
+cd TensorRT
+git checkout release/8.4
+cd tools/pytorch-quantization
+python setup.py install
+
 # Deployment of BEV 3D Detection on TensorRT
 
 This repository is a deployment project of BEV 3D Detection (including [BEVFormer](https://github.com/fundamentalvision/BEVFormer), [BEVDet](https://github.com/HuangJunJie2017/BEVDet)) on [TensorRT](https://developer.nvidia.com/tensorrt), supporting **FP32/FP16/INT8** inference. Meanwhile, in order to improve the inference speed of BEVFormer on TensorRT, this project implements some TensorRT Ops that support [**nv_half**](https://docs.nvidia.com/cuda/cuda-math-api/group__CUDA__MATH____HALF__ARITHMETIC.html#group__CUDA__MATH____HALF__ARITHMETIC),  [**nv_half2**](https://docs.nvidia.com/cuda/cuda-math-api/group__CUDA__MATH____HALF2__ARITHMETIC.html#group__CUDA__MATH____HALF2__ARITHMETIC) and **INT8**. With the accuracy almost unaffected, the inference speed of the **BEVFormer base** can be increased by more than **four times**, the engine size can be reduced by more than **90%**, and the GPU memory usage can be saved by more than **80%**. In addition, the project also supports common 2D object detection models in [MMDetection](https://github.com/open-mmlab/mmdetection), which support **INT8 Quantization** and **TensorRT Deployment** with a small number of code changes.
