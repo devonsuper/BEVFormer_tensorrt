@@ -1,11 +1,11 @@
 matplotlib==3.5.1
-netron==6.8.0
 numba==0.48.0
-numpy==1.20.0
+numpy==1.22.4
+netron
 nuscenes_devkit==1.1.9
 opencv_python==4.6.0.66
 Pillow==9.5.0
-pycocotools==2.0.4
+Cython==0.29.36 
 pycuda==2022.1
 pyquaternion==0.9.9
 scipy==1.7.3
@@ -19,3 +19,4 @@ nvidia-pyindex
 pytorch_quantization
 --extra-index-url https://pypi.ngc.nvidia.com
 --extra-index-url https://pypi.tuna.tsinghua.edu.cn/simple
+--extra-index-url https://pypi.nvidia.com

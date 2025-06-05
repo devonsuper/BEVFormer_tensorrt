@@ -87,10 +87,16 @@ RUN cd /usr/local/bin && wget https://ngc.nvidia.com/downloads/ngccli_cat_linux.
 # Install PyTorch
 RUN pip3 install torch==1.12.1+cu116 torchvision==0.13.1+cu116 --extra-index-url https://download.pytorch.org/whl/cu116 --extra-index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
+# install this bullshit
+RUN pip install "Cython==0.29.36"
+RUN git clone https://github.com/philferriere/cocoapi.git /tmp/cocoapi
+RUN sed -i 's/version="2.0"/version="2.0.2"/' /tmp/cocoapi/PythonAPI/setup.py
+RUN pip install /tmp/cocoapi/PythonAPI
+
 COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt
 
-ENV HTTPS_PROXY "http://127.0.0.1:20171"
+#ENV HTTPS_PROXY "http://127.0.0.1:20171"
 
 # Install MMLab
 ARG TORCH_CUDA_ARCH_LIST="7.5;6.1;8.6"
